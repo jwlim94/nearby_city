@@ -6,15 +6,29 @@ class NearbyCityService extends Core {
   late String type;
 
   @override
-  Future<List<dynamic>> getNearbyCity({
+  Future<List<dynamic>> getNearbyCityByTown({
     required String town,
     String city = '',
     int limit = 5,
     int distance = 10,
   }) =>
-      super.getNearbyCity(
+      super.getNearbyCityByTown(
         town: town,
         city: city,
+        limit: limit,
+        distance: distance,
+      );
+
+  @override
+  Future<List<dynamic>> getNearbyCityByLatLng({
+    required double lat,
+    required double lng,
+    int limit = 5,
+    int distance = 10,
+  }) =>
+      super.getNearbyCityByLatLng(
+        lat: lat,
+        lng: lng,
         limit: limit,
         distance: distance,
       );
