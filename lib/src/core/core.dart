@@ -10,16 +10,25 @@ class Core {
 
   late NetworkRequest _networkRequest;
 
+  List<dynamic>? _townData;
+
+  Future<List<dynamic>> _getTownData() async {
+    if (_townData == null) {
+      _townData = await _networkRequest.fetchNearbyCity();
+    }
+    return _townData!;
+  }
+
   Future<List<dynamic>> getNearbyCityByLatLng({
     required double lat,
     required double lng,
     int limit = 5,
-    int distance = 10,
+    double distance = 10.0,
   }) async {
     List<dynamic> result = [];
 
     // fetch data
-    List<dynamic> townData = await _networkRequest.fetchNearbyCity();
+    List<dynamic> townData = await _getTownData();
 
     dynamic nearestTown = getNearestTown(townData, lat, lng);
 
@@ -27,8 +36,8 @@ class Core {
       "시도명": nearestTown[0],
       "시군구명": nearestTown[1],
       "읍면동명": nearestTown[2],
-      "위도": nearestTown[3],
-      "경도": nearestTown[4],
+      "경도": nearestTown[3],
+      "위도": nearestTown[4],
       "근처동네": []
     };
 
@@ -45,8 +54,8 @@ class Core {
         "시도명": townData[index][0],
         "시군구명": townData[index][1],
         "읍면동명": townData[index][2],
-        "위도": townData[index][3],
-        "경도": townData[index][4],
+        "경도": townData[index][3],
+        "위도": townData[index][4],
         "거리": nearbyTown[1],
       };
 
@@ -63,12 +72,12 @@ class Core {
     required String town,
     String city = '',
     int limit = 5,
-    int distance = 10,
+    double distance = 10.0,
   }) async {
     List<dynamic> result = [];
 
     // fetch data
-    List<dynamic> townData = await _networkRequest.fetchNearbyCity();
+    List<dynamic> townData = await _getTownData();
 
     // parse data
     for (var town_ in townData) {
@@ -77,8 +86,8 @@ class Core {
           "시도명": town_[0],
           "시군구명": town_[1],
           "읍면동명": town_[2],
-          "위도": town_[3],
-          "경도": town_[4],
+          "경도": town_[3],
+          "위도": town_[4],
           "근처동네": []
         };
 
@@ -100,8 +109,8 @@ class Core {
             "시도명": townData[index][0],
             "시군구명": townData[index][1],
             "읍면동명": townData[index][2],
-            "위도": townData[index][3],
-            "경도": townData[index][4],
+            "경도": townData[index][3],
+            "위도": townData[index][4],
             "거리": nearbyTown[1],
           };
 
