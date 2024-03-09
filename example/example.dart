@@ -25,26 +25,42 @@ void main() async {
     );
     print(data3);
 
-    // get by lat(위도), lng(경도)
-    List<dynamic> data4 = await nearbyCityService.getNearbyCityByLatLng(
-      lat: 127.069013,
-      lng: 37.316416,
-    );
-    print(data4);
-
     // use "limit" param to limit the number of data
-    List<dynamic> data5 = await nearbyCityService.getNearbyCityByTown(
+    List<dynamic> data4 = await nearbyCityService.getNearbyCityByTown(
       town: '성복동',
       limit: 3,
     );
-    print(data5);
+    print(data4);
 
     // use "distance" param to get only within that distance (unit -- km)
-    List<dynamic> data6 = await nearbyCityService.getNearbyCityByTown(
+    List<dynamic> data5 = await nearbyCityService.getNearbyCityByTown(
       town: '성복동',
       distance: 5,
     );
+    print(data5);
+
+    // get by lat(위도), lng(경도)
+    List<dynamic> data6 = await nearbyCityService.getNearbyCityByLatLng(
+      lat: 37.316416,
+      lng: 127.069013,
+    );
     print(data6);
+
+    // get by lat(위도), lng(경도) and use "distance" param
+    List<dynamic> data7 = await nearbyCityService.getNearbyCityByLatLng(
+      lat: 37.316416,
+      lng: 127.069013,
+      distance: 1.5,
+    );
+    print(data7);
+
+    // get by lat(위도), lng(경도) and use "limit" param
+    List<dynamic> data8 = await nearbyCityService.getNearbyCityByLatLng(
+      lat: 37.316416,
+      lng: 127.069013,
+      limit: 3,
+    );
+    print(data8);
   } catch (e) {
     print(e);
   }

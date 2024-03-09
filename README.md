@@ -2,7 +2,17 @@ This package helps to get nearby cities in Korea by providing town(읍면동) an
 
 ## Features
 
-This package to get nearby cities is great when you use this feature with get current location feature. By getting the current location you assume to have data on what town and city you are in. By providing those information in `getNearbyCity` functionality, you are expected to get all the nearby cities from that town.
+This package to get nearby cities is great when you use this feature with get current location feature. By getting the current location you assume to have data on what town and city you are in either by (city, town) name or (lat, lng).
+
+`getNearbyCityByName`: get nearby city by town(required) and city(optional) name.
+
+`getNearbyCityByLatLng`: get nearby city by lat(required) and lng(required).
+
+This is what each param stands for in Korean district:
+
+- state: 시, 도
+- city: 시, 군, 구
+- town: 읍, 면, 동
 
 ## Getting started
 

@@ -10,7 +10,7 @@ class NearbyCityService extends Core {
     required String town,
     String city = '',
     int limit = 5,
-    int distance = 10,
+    double distance = 10.0,
   }) =>
       super.getNearbyCityByTown(
         town: town,
@@ -24,7 +24,7 @@ class NearbyCityService extends Core {
     required double lat,
     required double lng,
     int limit = 5,
-    int distance = 10,
+    double distance = 10.0,
   }) =>
       super.getNearbyCityByLatLng(
         lat: lat,
