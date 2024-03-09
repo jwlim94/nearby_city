@@ -33,12 +33,12 @@ class Core {
     dynamic nearestTown = getNearestTown(townData, lat, lng);
 
     var townObj = {
-      "시도명": nearestTown[0],
-      "시군구명": nearestTown[1],
-      "읍면동명": nearestTown[2],
-      "경도": nearestTown[3],
-      "위도": nearestTown[4],
-      "근처동네": []
+      "state": nearestTown[0],
+      "city": nearestTown[1],
+      "town": nearestTown[2],
+      "lat": nearestTown[3],
+      "lng": nearestTown[4],
+      "nearbyCity": []
     };
 
     List<dynamic> nearbyResult = [];
@@ -51,18 +51,18 @@ class Core {
 
       var index = nearbyTown[0];
       var nearbyObj = {
-        "시도명": townData[index][0],
-        "시군구명": townData[index][1],
-        "읍면동명": townData[index][2],
-        "경도": townData[index][3],
-        "위도": townData[index][4],
-        "거리": nearbyTown[1],
+        "state": townData[index][0],
+        "city": townData[index][1],
+        "town": townData[index][2],
+        "lat": townData[index][3],
+        "lng": townData[index][4],
+        "distance": nearbyTown[1],
       };
 
       nearbyResult.add(nearbyObj);
     }
 
-    townObj['근처동네'] = nearbyResult;
+    townObj['nearbyCity'] = nearbyResult;
     result.add(townObj);
 
     return result;
@@ -83,17 +83,17 @@ class Core {
     for (var town_ in townData) {
       if (town_[2] == town) {
         var townObj = {
-          "시도명": town_[0],
-          "시군구명": town_[1],
-          "읍면동명": town_[2],
-          "경도": town_[3],
-          "위도": town_[4],
-          "근처동네": []
+          "state": town_[0],
+          "city": town_[1],
+          "town": town_[2],
+          "lat": town_[3],
+          "lng": town_[4],
+          "nearbyCity": []
         };
 
         // Parse more specifically with city param
         if (city != '' &&
-            townObj['시군구명'].trim().replaceAll(' ', '') !=
+            townObj['city'].trim().replaceAll(' ', '') !=
                 city.trim().replaceAll(' ', '')) continue;
 
         List<dynamic> nearbyResult = [];
@@ -106,18 +106,18 @@ class Core {
 
           var index = nearbyTown[0];
           var nearbyObj = {
-            "시도명": townData[index][0],
-            "시군구명": townData[index][1],
-            "읍면동명": townData[index][2],
-            "경도": townData[index][3],
-            "위도": townData[index][4],
-            "거리": nearbyTown[1],
+            "state": townData[index][0],
+            "city": townData[index][1],
+            "town": townData[index][2],
+            "lat": townData[index][3],
+            "lng": townData[index][4],
+            "distance": nearbyTown[1],
           };
 
           nearbyResult.add(nearbyObj);
         }
 
-        townObj['근처동네'] = nearbyResult;
+        townObj['nearbyCity'] = nearbyResult;
         result.add(townObj);
       }
     }
