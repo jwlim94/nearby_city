@@ -6,7 +6,7 @@ class Core {
     _networkRequest = NetworkRequest();
   }
 
-  static String version = '0.0.2';
+  static String version = '0.0.3';
 
   late NetworkRequest _networkRequest;
 
