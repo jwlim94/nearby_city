@@ -12,3 +12,7 @@
 - change Korean key names to English
 - change distance param type from int to double
 - [bug fix] replace lat and lng
+
+## 0.0.4
+
+- [bug fix] modify `calculateDistance` function
