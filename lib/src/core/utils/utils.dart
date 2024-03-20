@@ -35,8 +35,8 @@ dynamic getNearestTown(List<dynamic> townData, double lat, double lng) {
     double calculatedDistance = calculateDistance(
       lat,
       lng,
-      double.parse(town_[4]),
       double.parse(town_[3]),
+      double.parse(town_[4]),
     );
 
     if (calculatedDistance < result[0]) {
